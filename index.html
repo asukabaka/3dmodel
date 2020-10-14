@@ -7,7 +7,7 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene background="color: grey">
+    <a-scene background="color: black">
       <a-assets>
         <a-asset-item
           id="flowermask"
@@ -49,6 +49,14 @@
           id="bat"
           src="bat.gltf"
         ></a-asset-item>
+        <a-asset-item
+          id="knife"
+          src="knife.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="impact"
+          src="impact.gltf"
+        ></a-asset-item>
       </a-assets>
       <a-entity id="camera"
       camera
@@ -56,11 +64,39 @@
       wasd-controls
       position="-6 1.5 0"
       ></a-entity>
+      <!-- <a-entity light="type:directional; castShadow:true; intensity: 2;" position="1 5 20"></a-entity> -->
+      <a-sky color="white"></a-sky>
       <a-entity
         gltf-model="#flowermask"
         scale="0.6 0.6 0.6"
         position="-6.5 0 -5"
         rotation ="0 90 0"
+        material = "color: black"
+        modify-materials
+      ></a-entity>
+      <a-entity
+        gltf-model="#impact"
+        scale="1 1 1"
+        position="-6.5 0 -5"
+        rotation ="0 90 0"
+        material = "color: black"
+        modify-materials
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#impact"
+        scale="1 1 1"
+        position="-6.5 -2 -5"
+        rotation ="0 90 10"
+        material = "color: black"
+        modify-materials
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#impact"
+        scale="1 1 1"
+        position="-4 -2 -7"
+        rotation ="-10 90 10"
         material = "color: black"
         modify-materials
       ></a-entity>
@@ -126,6 +162,24 @@
         material = "color: #ffdae0"
         scale="0.5 0.5 0.5"
         position="-6 0 -5"
+        rotation ="0 90 0"
+        modify-materials
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#petals"
+        material = "color: #ffdae0"
+        scale="0.5 0.5 0.5"
+        position="-6 2 -8"
+        rotation ="0 90 0"
+        modify-materials
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#petals"
+        material = "color: #ffdae0"
+        scale="0.5 0.5 0.5"
+        position="-6 3 -5"
         rotation ="0 90 0"
         modify-materials
       ></a-entity>
@@ -210,6 +264,14 @@
         material = "color: #ffdae0"
         scale="5 5 5"
         position="-3 .65 -6.75"
+        modify-materials
+      ></a-entity>
+      <a-entity
+        gltf-model="#knife"
+        rotation="0 0 60"
+        material = "color: #ffdae0"
+        scale=".003 .003 .003"
+        position="-3 .65 -5.75"
         modify-materials
       ></a-entity>
       <a-plane
