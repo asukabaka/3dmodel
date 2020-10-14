@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello, WebVR! • A-Frame</title>
+    <meta name="description" content="Hello, WebVR! • A-Frame" />
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent("modify-materials", {
+        init: function() {
+          // Wait for model to load.
+          this.el.addEventListener("model-loaded", () => {
+            // Grab the mesh / scene.
+            const obj = this.el.getObject3D("mesh");
+            // Go over the submeshes and modify materials we want.
+            obj.traverse(node => {
+              if (node.name.indexOf("ship") !== -1) {
+                node.material.color.set("red");
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene background="color: grey">
+      <a-assets>
+        <a-asset-item
+          id="flowermask"
+          src="https://cdn.glitch.com/77bf9cac-a1a4-4b7e-94e8-869f05c87296%2Fflower%20mask.gltf?v=1602671840610"
+        ></a-asset-item>
+        <a-asset-item
+          id="riotgas"
+          src="https://cdn.glitch.com/77bf9cac-a1a4-4b7e-94e8-869f05c87296%2Friot%20gas.gltf?v=1602672572259"
+        ></a-asset-item>
+        <a-asset-item
+          id="flowersandpetals"
+          src="https://cdn.glitch.com/77bf9cac-a1a4-4b7e-94e8-869f05c87296%2Fflower%20and%20petals.gltf?v=1602672819416"
+        ></a-asset-item>
+      </a-assets>
+      <a-entity
+        gltf-model="#flowermask"
+        scale="0.5 0.5 0.5"
+        modify-materials
+      ></a-entity>
+      <a-entity
+        gltf-model="#riotgas"
+        scale="0.5 0.5 0.5"
+        modify-materials
+      ></a-entity>
+      <a-entity
+        gltf-model="#flowersandpetals"
+        color="#ffdae0"
+        scale="0.5 0.5 0.5"
+        modify-materials
+      ></a-entity>
+      <a-entity
+        gltf-model="#flowersandpetals"
+        color="#ffdae0"
+        position="1 -1 1"
+        scale="0.5 0.5 -0.5"
+        modify-materials
+      ></a-entity>
+      <!--       <a-box
+        position="-1 0.5 -3"
+        rotation="0 45 0"
+        color="#FFFFFF"
+        shadow
+      ></a-box>
+      <a-sphere
+        position="0 1.25 -5"
+        radius="1.25"
+        color="#FFFFFF"
+        shadow
+      ></a-sphere>
+      <a-cylinder
+        position="1 0.75 -3"
+        radius="0.5"
+        height="1.5"
+        color="#FFFFFF"
+        shadow
+      ></a-cylinder> -->
+      <a-plane
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="8"
+        height="8"
+        color="#FFFFFF"
+        shadow
+      ></a-plane>
+    </a-scene>
+  </body>
+</html>
